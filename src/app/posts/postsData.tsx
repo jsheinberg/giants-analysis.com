@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export interface PostData {
   title: string;
@@ -9,16 +10,16 @@ export interface PostData {
 
 export const posts: { [key: string]: PostData } = {
   'sample-post': {
-    title: "Matt Chapman's 2025 Performance",
+    title: "Matt Chapman&apos;s 2025 Performance",
     date: "June 9, 2025",
     content: (
       <>
-        <p>Matt Chapman's baseline statistics this year are a bit confusing. His batting average is essentially the league average, he leads the Giants with 12 home runs, which is tied for 28th in the league. He is obviously one of the best fielders in baseball.</p>
-        <p>All things considered, he is having a great year. Interestingly, he is 8th in baseball in WAR at 2.9. Meanwhile, he isn't top ten in any other offensive category aside from walks.</p>
-        <p>So what's the deal? How is it that Chapman is top 10 in value, but doesn't have the flashy stats to show for it?</p>
-        <img src="/images/chapman-batting-average-2025.png" alt="Matt Chapman's Batting Average vs. MLB Average (2025)" style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
-        <p>As we can see from the chart above Chapman's batting average is approaching the league average. The regression also tends toward Chapman's career average, 241.</p>
-        <img src="/images/chapman-obp-2025.png" alt="Matt Chapman's OBP vs. MLB Average (2025)" style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+        <p>Matt Chapman&apos;s baseline statistics this year are a bit confusing. His batting average is essentially the league average, he leads the Giants with 12 home runs, which is tied for 28th in the league. He is obviously one of the best fielders in baseball.</p>
+        <p>All things considered, he is having a great year. Interestingly, he is 8th in baseball in WAR at 2.9. Meanwhile, he isn&apos;t top ten in any other offensive category aside from walks.</p>
+        <p>So what&apos;s the deal? How is it that Chapman is top 10 in value, but doesn&apos;t have the flashy stats to show for it?</p>
+        <Image src="/images/chapman-batting-average-2025.png" alt="Matt Chapman&apos;s Batting Average vs. MLB Average (2025)" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+        <p>As we can see from the chart above Chapman&apos;s batting average is approaching the league average. The regression also tends toward Chapman&apos;s career average, 241.</p>
+        <Image src="/images/chapman-obp-2025.png" alt="Matt Chapman&apos;s OBP vs. MLB Average (2025)" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
         <br />
         
         <p>It is clear that Chapman is getting on base at a higher rate than the league average. And Billy Beane would assure us that this 
@@ -26,19 +27,19 @@ export const posts: { [key: string]: PostData } = {
         </p>
         <br />
         <p>
-           If we look deeper into chapmans statistics relative to the league we can see where he's creating value.
+           If we look deeper into chapmans statistics relative to the league we can see where he&apos;s creating value.
         </p>
-        <img src="/images/chapman-batting.png" alt="Matt Chapman's wOBA vs. MLB Average (2025)" style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+        <Image src="/images/chapman-batting.png" alt="Matt Chapman&apos;s wOBA vs. MLB Average (2025)" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
         <br />
         <p>
-            Chapman is hitting the ball hard, and he's walking a lot. If I was a pitcher, this isn't a guy I'd want to see.
-            He's got the speed to bat leadoff, the power to bat third, and the ability to break any game open.          
+            Chapman is hitting the ball hard, and he&apos;s walking a lot. If I was a pitcher, this isn&apos;t a guy I&apos;d want to see.
+            He&apos;s got the speed to bat leadoff, the power to bat third, and the ability to break any game open.          
         </p>
         <br /> 
         <ul>
           <li>His average exit velocity 94mph which is 11th in the league.</li>
           <li>His xwOBA is 374 which is 30th in the league.</li>
-          <li>He's one of the best fielding third baseman of all time.</li>
+          <li>He&apos;s one of the best fielding third baseman of all time.</li>
           <li>His 28.2 sprint speed is quick for the league average</li>
           <li>He has a cannon from third</li>
         </ul>
@@ -114,7 +115,7 @@ league_avg = 0.244
 plt.figure(figsize=(10, 5))
 plt.plot(df['date'], df['AVG'], marker='o', label="Matt Chapman")
 plt.axhline(y=league_avg, color='red', linestyle='--', label="MLB AVG (.244)")
-plt.title("Matt Chapman's Batting Average vs. MLB Average (2025)")
+plt.title("Matt Chapman&apos;s Batting Average vs. MLB Average (2025)")
 plt.xlabel("Date")
 plt.ylabel("Batting Average")
 plt.legend()
@@ -129,7 +130,7 @@ league_obp = 0.312
 plt.figure(figsize=(10, 5))
 plt.plot(df_chapman['date'], df_chapman['OBP'], marker='o', label="Matt Chapman OBP")
 plt.axhline(league_obp, color='red', linestyle='--', label="MLB OBP AVG (.312)")
-plt.title("Matt Chapman's On-Base Percentage vs. MLB Average (2025)")
+plt.title("Matt Chapman&apos;s On-Base Percentage vs. MLB Average (2025)")
 plt.xlabel("Date")
 plt.ylabel("On-Base Percentage")
 plt.legend()
@@ -151,7 +152,7 @@ league_averages = {
     'Swing%': 47.0
 }
 
-# Matt Chapman's values from the data
+# Matt Chapman&apos;s values from the data
 chapman_stats = {
     'wOBA': 0.360,
     'xwOBA': 0.374,
@@ -217,7 +218,7 @@ plt.show()
           <h2>The most fundamental question we must ask: buy or sell?</h2>
 
             <p>
-            Buster’s first season got off to a piping hot start, and relative to what we’ve achieved in the last couple years, I’m pretty excited. 
+            Buster&apos;s first season got off to a piping hot start, and relative to what we&apos;ve achieved in the last couple years, I&apos;m pretty excited. 
             Albeit, if we separate out the performance of players who Buster has signed in his tenure as Head of Baseball Operations, it is rather disappointing — thanks Willy.
             </p>
             <br />
@@ -231,23 +232,23 @@ plt.show()
             </p>
             <br />
             <p>
-            The bats have done just barely enough to win games. The Giants have won their last 6 games by one run. One thing they’ve shown they can do as good as any team in baseball is come back from behind.
+            The bats have done just barely enough to win games. The Giants have won their last 6 games by one run. One thing they&apos;ve shown they can do as good as any team in baseball is come back from behind.
             </p>
             <br />
             <p>
-            The reality of the buy/sell question: with this staff and bullpen, you have to buy. Buster Posey has brought life to San Francisco and historically that’s the most fundamental ingredient — 
+            The reality of the buy/sell question: with this staff and bullpen, you have to buy. Buster Posey has brought life to San Francisco and historically that&apos;s the most fundamental ingredient — 
             along with the legendary staff that brought 3 World Series titles to SF.
             </p>
             <br />
             <h3>So where do we need to buy?</h3>
             <br />
             <p>
-            The first thing I’ll say is we have a few restrictions. To be more specific, Willy Adames’ contract and Pat Bailey’s glove. 
-            So we won’t be looking at a shortstop or catcher even though those have been large offensive holes.
+            The first thing I&apos;ll say is we have a few restrictions. To be more specific, Willy Adames&apos; contract and Pat Bailey&apos;s glove. 
+            So we won&apos;t be looking at a shortstop or catcher even though those have been large offensive holes.
             </p>
             <br />
             <p>
-            The most blaring gap has been first base; and don’t get me wrong, Dom Smith has Giants baseball written all over him, 
+            The most blaring gap has been first base; and don&apos;t get me wrong, Dom Smith has Giants baseball written all over him, 
             but to contend, the Giants need some serious positive run value — and this is the obvious place.
             </p>
             <br />
@@ -256,39 +257,39 @@ plt.show()
             </p>
             <br />
 
-            <img src="/images/first_base_xwOBA.png" alt="First Base xwOBA" style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+            <Image src="/images/first_base_xwOBA.png" alt="First Base xwOBA" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
             <br />
             <p><em>
             Keep in mind that the requirement to be considered is having played more than a game at first base this season, 
-            so there are some players not typically thought of as first basemen here. It’s time to get creative so we will consider them.
+            so there are some players not typically thought of as first basemen here. It&apos;s time to get creative so we will consider them.
             </em></p>
             <br />
             <h4>Possible players:</h4>
             <p>
             Nolan Schanuel, Josh Bell, Eric Wagaman, Josh Naylor, Lenyn Sosa, Hunter Goodman, Lourdes Gurriel Jr., Ryan McMahon, Josh Smith, 
-            Matt Olson, Miguel Vargas, Jake Burger, Ryan O'Hearn, Nathaniel Lowe, Tyler Soderstrom, Austin Riley, Taylor Ward
+            Matt Olson, Miguel Vargas, Jake Burger, Ryan O&apos;Hearn, Nathaniel Lowe, Tyler Soderstrom, Austin Riley, Taylor Ward
             </p>
             <br />
             <p>
-            Let’s take out some names I think aren’t possible: Josh Naylor, Lourdes Gurriel, Matt Olson, Austin Riley, and Tyler Soderstrom.
+            Let&apos;s take out some names I think aren&apos;t possible: Josh Naylor, Lourdes Gurriel, Matt Olson, Austin Riley, and Tyler Soderstrom.
             </p>
             <br />
             <p>
-            Ryan O’Hearn quickly becomes the far and away best candidate to fill the Giants’ hole. Let’s take a deeper dive into O’Hearn, 
-            but we won’t get fixated (as any Giants fan knows, he’s far too good of a fit for us to actually get him).
+            Ryan O&apos;Hearn quickly becomes the far and away best candidate to fill the Giants&apos; hole. Let&apos;s take a deeper dive into O&apos;Hearn, 
+            but we won&apos;t get fixated (as any Giants fan knows, he&apos;s far too good of a fit for us to actually get him).
             </p>
             <br />
             <p>
-            O’Hearn is a lefty hitter with some pop and some speed. He has played a ton of positions this year with over 100 innings at 1B and RF. 
+            O&apos;Hearn is a lefty hitter with some pop and some speed. He has played a ton of positions this year with over 100 innings at 1B and RF. 
             So, he has the ability to play outfield if Bryce Eldridge is called up at some point this year.
             </p>
             <br />
-            <h4>Potential lineup with O’Hearn:</h4>
+            <h4>Potential lineup with O&apos;Hearn:</h4>
             <ul>
             <li>JHL (been a beast at the leadoff spot)</li>
             <li>Willy Adames (heating up)</li>
             <li>Heliot Ramos (dawg)</li>
-            <li>Ryan O’Hearn (dawg)</li>
+            <li>Ryan O&apos;Hearn (dawg)</li>
             <li>Matt Chapman (see above)</li>
             <li>Eldridge</li>
             <li>Wilmer (RBI machine)</li>
@@ -462,7 +463,7 @@ plt.show()
           <li>Excellent range in center field</li>
           <li>Quick adaptation to MLB pitching</li>
         </ul>
-        <p>Lee's ability to get on base and make things happen with his speed has energized the top of the lineup.</p>
+        <p>Lee&apos;s ability to get on base and make things happen with his speed has energized the top of the lineup.</p>
       </>
     ),
     code: (
