@@ -3,9 +3,8 @@ import Link from 'next/link'
 import Tabs from '@/components/Tabs'
 import { posts } from '../postsData'
 
-export default async function PostPage(props: { params: { slug: string } }) {
-  const params = await props.params;
-  const { slug } = params;
+export default function PostPage(props: { params: { slug: string } }) {
+  const { slug } = props.params;
 
   const post = posts[slug];
   if (!post) {
@@ -14,10 +13,7 @@ export default async function PostPage(props: { params: { slug: string } }) {
 
   return (
     <article className="max-w-3xl mx-auto">
-      <Link 
-        href="/"
-        className="inline-block mb-8 text-orange-600 hover:text-orange-700"
-      >
+      <Link href="/" className="inline-block mb-8 text-orange-600 hover:text-orange-700">
         ← Back to Home
       </Link>
       <header className="mb-8">
@@ -32,4 +28,4 @@ export default async function PostPage(props: { params: { slug: string } }) {
       </Tabs>
     </article>
   );
-} 
+}
