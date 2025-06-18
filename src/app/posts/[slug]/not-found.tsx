@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { posts } from '../postsData'
 
 export default function NotFound() {
   return (
