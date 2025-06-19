@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Tabs from '@/components/Tabs';
 import { posts } from '../postsData';
+import { use } from 'react';
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default function PostPage({params} : {params: Promise<{ slug: string }>}) {
+  const { slug } = use(params);
+
   const post = posts[slug];
-
   if (!post) {
     notFound();
   }
