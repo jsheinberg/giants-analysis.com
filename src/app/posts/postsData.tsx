@@ -456,14 +456,51 @@ plt.show()
     title: "Rafeal F-ing Devers",
     date: "June 16, 2025",
     content: (
-      <>
-        <p>Jung Hoo Lee has been a key contributor for the Giants in 2025. His contact skills and outfield defense have made a big impact.</p>
+        <>
+        <p>
+          I grew up with a Buster Posey fathead on my wall, but I don't think I've ever been more fired up about him than I am now.
+        </p>
+        <br />  
+        <p>
+          Yes, the Giants gave up some upside arms. Yes, this is now the largest contract in franchise history. But I love it.
+        </p>
+        <br />
+        <p>
+          I love the timing — no more waiting until late July to start winning or investing. <br />
+          I love the message — this front office is saying loud and clear: <strong>we're going for it</strong>. <br />
+          I love the buzz — the last time the Giants were dominating national headlines like this was 2014.
+        </p>
+        <br />
+        <h2>Let's dive into Raffy.</h2>
+        <p>Here's a chart of the results of his 334 plate appearances this season:</p>
+        <br />
+        <Image src="/images/raffy-pie.png" alt="Rafael Devers Chart" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+        <br />
+        <p>
+          Rafael Devers gets on base in about <strong>40% of his at-bats</strong>, well above the Giants' team average of <strong>31%</strong>. He immediately becomes the team's <strong>home run leader</strong> with 15 — and that's just the beginning. He now leads the Giants in:
+        </p>
+        <br />
         <ul>
-          <li>High contact rate and low strikeout percentage</li>
-          <li>Excellent range in center field</li>
-          <li>Quick adaptation to MLB pitching</li>
+          <li><strong>OPS</strong></li>
+          <li><strong>RBIs</strong></li>
+          <li><strong>Walks</strong></li>
+          <li><strong>Doubles</strong></li>
         </ul>
-        <p>Lee&apos;s ability to get on base and make things happen with his speed has energized the top of the lineup.</p>
+        <br />
+        <p>He's not just a big bat — he's the biggest in orange and black.</p>
+        <br />
+        <h1>The Lefty Effect</h1>
+        <br />
+        <p>
+          Devers is even more valuable given the Giants' current lefty situation. Among left-handed hitters — Mike Yastrzemski, Patrick Bailey, Daniel Johnson, Jung Hoo Lee, and Dom Smith — only Dom has an OPS over .800, and he's had just 35 at-bats.
+        </p>
+        <p>
+          Remove Dom, and the <strong>average OPS for Giants lefties is .698</strong>. Devers? <strong>.905.</strong>
+        </p>
+        <br />
+        <p>
+          Time to get the kayaks out in McCovey Cove — Raffy's going to make waves.
+        </p>
       </>
     ),
     code: (
