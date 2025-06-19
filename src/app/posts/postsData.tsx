@@ -506,7 +506,68 @@ plt.show()
     code: (
       <pre>
         <code>
-{`# import requests
+{`# 
+    !pip install MLB-StatsAPI
+import statsapi
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+df = statsapi.player_stat_data(646240)
+raffy = pd.DataFrame(df)
+print(raffy['stats'][0])
+doubles = raffy["stats"][0]["stats"]["doubles"]
+hrs = raffy["stats"][0]["stats"]["homeRuns"]
+triples = raffy["stats"][0]["stats"]["triples"]
+singles = raffy["stats"][0]["stats"]["hits"] - doubles - hrs - triples
+walks = raffy["stats"][0]["stats"]["baseOnBalls"]
+groundOuts = raffy["stats"][0]["stats"]["groundOuts"]
+airOuts = raffy["stats"][0]["stats"]["airOuts"]
+PAs = raffy["stats"][0]["stats"]["plateAppearances"]
+strikeouts = raffy["stats"][0]["stats"]["strikeOuts"]
+
+other = raffy["stats"][0]["stats"]["hitByPitch"]
+
+labels = ['Singles', 'Doubles', 'Home Runs', 'Walks', 'Ground Outs', 'Air Outs', 'Ks']
+values = [singles, doubles, hrs, walks, groundOuts, airOuts, strikeouts]
+
+colors = [
+    '#4A90E2',  # Singles (blue)
+    '#5DADE2',  # Doubles (lighter blue)
+    '#2E86C1',  # Home Runs (dark blue)
+    '#3498DB',  # Walks (mid blue)
+    '#E74C3C',  # Ground Outs (red)
+    '#C0392B',   # Air Outs (dark red)
+    '#A93226'   # Strikeouts (darker red)
+]
+
+# Plot pie chart with color mapping
+plt.figure(figsize=(8, 8))
+plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140, colors=colors)
+plt.title("Rafael Devers – At Bat Outcomes")
+plt.tight_layout()
+plt.show()
+
+
+
+
+# average lefty ops
+yaz = pd.DataFrame(statsapi.player_stat_data(573262))
+dj = pd.DataFrame(statsapi.player_stat_data(669288))
+jhl = pd.DataFrame(statsapi.player_stat_data(808982))
+pat = pd.DataFrame(statsapi.player_stat_data(672275))
+
+def get_ops(df):
+    for stat_entry in df["stats"]:
+        if "ops" in stat_entry.get("stats", {}):
+            return stat_entry["stats"]["ops"]
+    return None # Return None if ops is not found in any stat entry
+
+
+avg_ops = (float(get_ops(yaz)) + float(get_ops(dj)) + float(get_ops(pat)) + float(get_ops(jhl))) / 4
+print(avg_ops)
+
+
 
 
 #`}
