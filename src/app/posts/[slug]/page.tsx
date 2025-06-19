@@ -3,8 +3,7 @@ import Link from 'next/link'
 import Tabs from '@/components/Tabs'
 import { posts } from '../postsData'
 
-export default async function PostPage(props: { params: { slug: string } }) {
-  const params = await props.params;
+export default function PostPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
   const post = posts[slug];
