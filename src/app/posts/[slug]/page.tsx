@@ -1,12 +1,11 @@
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import Tabs from '@/components/Tabs'
-import { posts } from '../postsData'
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import Tabs from '@/components/Tabs';
+import { posts } from '../postsData';
 
 export default function PostPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+  const post = posts[params.slug];
 
-  const post = posts[slug];
   if (!post) {
     notFound();
   }
