@@ -4,7 +4,8 @@ import Tabs from '@/components/Tabs';
 import { posts } from '../postsData';
 
 export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = posts[params.slug];
+  const { slug } = params;
+  const post = posts[slug];
 
   if (!post) {
     notFound();
