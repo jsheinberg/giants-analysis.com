@@ -10,7 +10,7 @@ export interface PostData {
 
 export const posts: { [key: string]: PostData } = {
   'sample-post': {
-    title: "Matt Chapman&apos;s 2025 Performance",
+    title: "Matt Chapman's 2025 Performance",
     date: "June 9, 2025",
     content: (
       <>
