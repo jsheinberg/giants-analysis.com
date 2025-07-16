@@ -11,7 +11,7 @@ export interface PostData {
 export const posts: { [key: string]: PostData } = {
   'sample-post': {
     title: "Matt Chapman&apos;s 2025 Performance",
-    date: "June 9, 2025",
+    date: "June 1, 2025",
     content: (
       <>
         <p>Matt Chapman&apos;s baseline statistics this year are a bit confusing. His batting average is essentially the league average, he leads the Giants with 12 home runs, which is tied for 28th in the league. He is obviously one of the best fielders in baseball.</p>
@@ -212,7 +212,7 @@ plt.show()
   },
   'new-post': {
     title: "Giants Trade Deadline Analysis",
-    date: "June 13, 2025",
+    date: "June 14, 2025",
     content: (
       <>
           <h2>The most fundamental question we must ask: buy or sell?</h2>
@@ -454,7 +454,7 @@ plt.show()
   },
   'rafael-devers': {
     title: "Rafeal F-ing Devers",
-    date: "June 16, 2025",
+    date: "June 25, 2025",
     content: (
         <>
         <p>
@@ -577,7 +577,7 @@ print(avg_ops)
   },
   'wilmer-flores': {
     title: "Wilmer Flores - The RBI Anomaly",
-    date: "June 15, 2025",
+    date: "July 3, 2025",
     content: (
         <>
         
