@@ -10,7 +10,7 @@ export interface PostData {
 
 export const posts: { [key: string]: PostData } = {
   'sample-post': {
-    title: "Matt Chapman's 2025 Performance",
+    title: "Matt Chapman&apos;s 2025 Performance",
     date: "June 9, 2025",
     content: (
       <>
@@ -571,6 +571,252 @@ print(avg_ops)
 
 
 #`}
+        </code>
+      </pre>
+    )
+  },
+  'wilmer-flores': {
+    title: "Wilmer Flores - The RBI Anomaly",
+    date: "June 15, 2025",
+    content: (
+        <>
+        
+          <h1>Wilmer Flores: The RBI Merchant</h1>
+        
+          <p><strong>Wilmer Flores is an RBI machine.</strong></p>
+        
+          <p>He’s having what could be described as a typical Wilmer season—except it's not even July, and he’s already just nine RBIs short of his career high of 60. That begs the question: <em>Is Flores having a truly exceptional year beneath the surface, getting lucky, or is he simply one of the most clutch hitters in the league?</em></p>
+        
+          <p>To get to the bottom of this, I built a linear regression model using a set of key underlying metrics that typically correlate with run production. These included:</p>
+        
+          <ul>
+            <li><code>k_percent</code></li>
+            <li><code>bb_percent</code></li>
+            <li><code>wOBA</code> and <code>xwOBA</code></li>
+            <li><code>sweet_spot_percent</code></li>
+            <li><code>barrel_batted_rate</code></li>
+            <li><code>hard_hit_percent</code></li>
+            <li><code>whiff_percent</code></li>
+            <li><code>swing_percent</code></li>
+          </ul>
+        
+          <p>The model performed reasonably well, with a mean absolute error of <strong>5.8 RBIs</strong>. When I plugged Wilmer’s stats into the model, it predicted he should have about <strong>31 RBIs</strong> at this point in the season. In reality? He has <strong>51</strong>. That’s a difference of <strong>20 RBIs</strong>, or <strong>3.44 standard errors above the mean</strong>—a massive deviation in statistical terms.</p>
+        
+          <p>In other words: <strong>Wilmer Flores is a clear outlier.</strong></p>
+        
+          <p>Even if we strip out his explosive <strong>8-RBI game</strong>, he’d still be projected at 43 RBIs—far beyond the model's expectation and still a significant outlier. So what’s driving this overperformance?</p>
+        
+          <h2>A Clutch Beast?</h2>
+        
+          <p>Part of the explanation may be situational hitting. Flores has long had a reputation for delivering in high-leverage moments. His approach at the plate doesn’t change much under pressure—he swings early and often, and doesn’t shy away from attacking pitches in the zone. That consistency may be serving him well in RBI opportunities.</p>
+        
+          <p>There’s also the possibility that he’s benefiting from lineup dynamics. Flores often hits behind players who get on base—meaning he’s been given ample opportunities to drive in runs. But even so, the <em>rate</em> at which he’s cashing in those chances remains well above league norms.</p>
+        
+          <p>Another factor could simply be luck—baseball is noisy, and sometimes balls drop in. But the magnitude of Wilmer’s overperformance suggests something more than random variance.</p>
+          <br />
+          <Image src="/images/wilmer-hhp-rbi-.png" alt="Wilmer Flores RBI Anomaly" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+          <br />
+          <p>
+            Wilmer Flores - the outlier
+          </p>
+          <br /> 
+          <Image src="/images/wilmer-wxoba-rbi.png" alt="Wilmer Flores RBI Anomaly" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+          <br />
+          <p>
+            Wilmer Flores - a league of his own
+          </p>
+          <br />
+
+          <h2>The Flores Formula</h2>
+        
+          <p>While Wilmer Flores may not lead the league in flash, there’s a method to his quiet dominance. He’s a veteran hitter with a simple, aggressive approach, and in 2025, it’s translating into one of the most efficient RBI seasons in the league—if not the most surprising.</p>
+        
+          <p>Whatever the cause, one thing is clear: <strong>Wilmer Flores is the RBI merchant.</strong></p>
+        
+        </>
+    ),
+    code: (
+      <pre>
+        <code>
+{`!pip install MLB-StatsAPI
+import statsapi
+import pandas as pd
+import matplotlib.pyplot as plt
+import requests
+import numpy as np
+import seaborn as sns
+
+#wilmer cummulitive stats
+wilmer_stats = statsapi.player_stat_data(527038)
+wilmer_stats = wilmer_stats['stats'][0]['stats']
+print(wilmer_stats)
+
+# Step 1: Set date range
+start_date = "2025-03-28"
+end_date = "2025-06-08"
+
+# Step 2: Get Giants schedule
+schedule_url = f"https://statsapi.mlb.com/api/v1/schedule?teamId=137&startDate={start_date}&endDate={end_date}&sportId=1"
+schedule = requests.get(schedule_url).json()
+
+# Step 3: Collect completed game IDs
+games = []
+for date in schedule['dates']:
+    for game in date['games']:
+        if game['status']['codedGameState'] in ['F', 'O']:
+            games.append((game['gamePk'], game['gameDate'][:10]))
+
+# Step 4: Get Wilmer game-by-game stats
+wilmer_gbg = []
+
+for game_id, game_date in games:
+    box_url = f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore"
+    box = requests.get(box_url).json()
+    found = False
+    for side in ['home', 'away']:
+        for player_data in box['teams'][side]['players'].values():
+            if player_data['person']['fullName'] == "Wilmer Flores":
+                batting = player_data.get('stats', {}).get('batting', {})
+                wilmer_gbg.append({
+                    'date': game_date,
+                    'atBats': batting.get('atBats', 0),
+                    'plate_appearances': batting.get('plateAppearances', 0),
+                    'hits': batting.get('hits', 0),
+                    'walks': batting.get('baseOnBalls', 0),
+                    'rbis' : batting.get('rbi', 0),
+                })
+                found = True
+                break
+        if found:
+            break
+
+wilmer_gbg = pd.DataFrame(wilmer_gbg)
+print(wilmer_gbg.head())
+
+wilmer_gbg['cumulative_rbis'] = wilmer_gbg['rbis'].cumsum()
+
+# Plot cumulative RBIs
+# Filter for games where RBIs increased (i.e., delta from previous game > 0)
+wilmer_gbg['rbi_diff'] = wilmer_gbg['cumulative_rbis'].diff().fillna(wilmer_gbg['cumulative_rbis'])
+label_points = wilmer_gbg[wilmer_gbg['rbi_diff'] > 0]
+
+# Plot cumulative RBIs
+plt.figure(figsize=(10, 5))
+plt.plot(wilmer_gbg['date'], wilmer_gbg['cumulative_rbis'], marker='o', linestyle='-', linewidth=2)
+plt.title("Wilmer Flores: Cumulative RBIs by Game", fontsize=14)
+plt.xlabel("Game Date")
+plt.ylabel("Cumulative RBIs")
+plt.grid(True)
+plt.xticks(rotation=45)
+
+# mark only points where RBIs increased
+for _, row in label_points.iterrows():
+    plt.annotate(f"{int(row['rbis'])}", (row['date'], row['cumulative_rbis']),
+                 textcoords="offset points", xytext=(0,5), ha='center', fontsize=8)
+
+plt.tight_layout()
+plt.show()
+
+
+# wilmer rbis vs avg
+
+player_data = pd.read_csv('player_stats.csv')
+
+
+#add rbis to dataset
+
+rbi_list = []
+
+# Loop through each player and safely extract RBI
+for player_id in player_data['player_id']:
+    try:
+        player = statsapi.player_stat_data(
+            player_id,
+            group='hitting',
+            type='season',
+            season=2025
+        )
+        # Safe access with .get()
+        stats = player.get('stats', [{}])[0].get('stats', {})
+        rbi = stats.get('rbi', 0)
+    except Exception as e:
+        rbi = 0  # Fallback in case of any error
+    rbi_list.append(rbi)
+
+# Add RBIs to DataFrame
+player_data['rbis'] = rbi_list
+
+
+x_metrics = [
+    'k_percent', 'bb_percent', 'woba', 'xwoba',
+    'sweet_spot_percent', 'barrel_batted_rate',
+    'hard_hit_percent', 'whiff_percent', 'swing_percent'
+]
+
+#wilmer's row location
+wilmer_row = player_data[player_data['last_name, first_name'].str.contains("Flores, Wilmer", case=False, na=False)]
+
+# Plot RBIs vs each metric with Wilmer highlighted
+for x in x_metrics:
+    plt.figure(figsize=(7, 5))
+    sns.regplot(x=player_data[x], y=player_data['rbis'], scatter_kws={'alpha': 0.5}, line_kws={'color': 'blue'})
+    plt.scatter(player_data[x], player_data['rbis'], alpha=0.6, label='Other Players')
+    plt.scatter(
+        player_data.loc[wilmer_row.index, x],
+        player_data.loc[wilmer_row.index, 'rbis'],
+        color='red', s=100, label='Wilmer Flores'
+    )
+    plt.xlabel(x.replace('_', ' ').title())
+    plt.ylabel('RBIs')
+    plt.title(f'RBIs vs {x.replace("_", " ").title()}')
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+
+# Prepare data
+X = player_data[x_metrics]
+y = player_data['rbis']
+
+# Train/test split and model fitting
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Get Wilmer's feature values
+wilmer_features = player_data.loc[wilmer_row.index, x_metrics]
+
+
+
+# Predict expected RBIs for Wilmer
+wilmer_expected_rbis = model.predict(wilmer_features)[0]
+
+wilmer_expected_rbis
+
+
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
+y_pred = model.predict(X_test)
+
+# Evaluate model
+mse = mean_squared_error(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+mse, mae, r2
+
+
+yaz_row = player_data[player_data['last_name, first_name'].str.contains("Yastrzemski, Mike", case=False, na=False)]
+yaz_features = player_data.loc[yaz_row.index, x_metrics]
+yaz_expected_rbis = model.predict(yaz_features)[0]
+
+yaz_expected_rbis
+`}
         </code>
       </pre>
     )
