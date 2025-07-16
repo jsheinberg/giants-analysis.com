@@ -582,13 +582,15 @@ print(avg_ops)
         <>
         
           <h1>Wilmer Flores: The RBI Merchant</h1>
+          <br />
         
           <p><strong>Wilmer Flores is an RBI machine.</strong></p>
+          <br />
         
           <p>He’s having what could be described as a typical Wilmer season—except it's not even July, and he’s already just nine RBIs short of his career high of 60. That begs the question: <em>Is Flores having a truly exceptional year beneath the surface, getting lucky, or is he simply one of the most clutch hitters in the league?</em></p>
-        
+          <br />
           <p>To get to the bottom of this, I built a linear regression model using a set of key underlying metrics that typically correlate with run production. These included:</p>
-        
+          <br />
           <ul>
             <li><code>k_percent</code></li>
             <li><code>bb_percent</code></li>
@@ -599,22 +601,22 @@ print(avg_ops)
             <li><code>whiff_percent</code></li>
             <li><code>swing_percent</code></li>
           </ul>
-        
+          <br />
           <p>The model performed reasonably well, with a mean absolute error of <strong>5.8 RBIs</strong>. When I plugged Wilmer’s stats into the model, it predicted he should have about <strong>31 RBIs</strong> at this point in the season. In reality? He has <strong>51</strong>. That’s a difference of <strong>20 RBIs</strong>, or <strong>3.44 standard errors above the mean</strong>—a massive deviation in statistical terms.</p>
-        
+          <br />
           <p>In other words: <strong>Wilmer Flores is a clear outlier.</strong></p>
-        
+          <br />
           <p>Even if we strip out his explosive <strong>8-RBI game</strong>, he’d still be projected at 43 RBIs—far beyond the model's expectation and still a significant outlier. So what’s driving this overperformance?</p>
-        
+          <br />
           <h2>A Clutch Beast?</h2>
-        
+          <br />
           <p>Part of the explanation may be situational hitting. Flores has long had a reputation for delivering in high-leverage moments. His approach at the plate doesn’t change much under pressure—he swings early and often, and doesn’t shy away from attacking pitches in the zone. That consistency may be serving him well in RBI opportunities.</p>
-        
+          <br />
           <p>There’s also the possibility that he’s benefiting from lineup dynamics. Flores often hits behind players who get on base—meaning he’s been given ample opportunities to drive in runs. But even so, the <em>rate</em> at which he’s cashing in those chances remains well above league norms.</p>
-        
+
           <p>Another factor could simply be luck—baseball is noisy, and sometimes balls drop in. But the magnitude of Wilmer’s overperformance suggests something more than random variance.</p>
           <br />
-          <Image src="/images/wilmer-hhp-rbi-.png" alt="Wilmer Flores RBI Anomaly" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
+          <Image src="/images/wilmer-hhp-rbi.png" alt="Wilmer Flores RBI Anomaly" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
           <br />
           <p>
             Wilmer Flores - the outlier
