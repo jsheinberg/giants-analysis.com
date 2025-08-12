@@ -14,7 +14,7 @@ export const posts: { [key: string]: PostData } = {
     date: "June 1, 2025",
     content: (
       <>
-        <p>Matt Chapman&apos;s baseline statistics this year are a bit confusing. His batting average is essentially the league average, he leads the Giants with 12 home runs, which is tied for 28th in the league. He is obviously one of the best fielders in baseball.</p>
+        <p>Matt Chapman's baseline statistics this year are a bit confusing. His batting average is essentially the league average, he leads the Giants with 12 home runs, which is tied for 28th in the league. He is obviously one of the best fielders in baseball.</p>
         <p>All things considered, he is having a great year. Interestingly, he is 8th in baseball in WAR at 2.9. Meanwhile, he isn&apos;t top ten in any other offensive category aside from walks.</p>
         <p>So what&apos;s the deal? How is it that Chapman is top 10 in value, but doesn&apos;t have the flashy stats to show for it?</p>
         <Image src="/images/chapman-batting-average-2025.png" alt="Matt Chapman&apos;s Batting Average vs. MLB Average (2025)" width={600} height={300} style={{ margin: '2rem auto', display: 'block', maxWidth: '100%' }} />
